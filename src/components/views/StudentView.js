@@ -8,6 +8,7 @@ import { Link, useHistory } from "react-router-dom";
 
 const StudentView = (props) => {
   const { student } = props;
+  const history = useHistory();
 
   if (!student) return <h1>No student found</h1>;
 
@@ -16,6 +17,13 @@ const StudentView = (props) => {
     <div style={{ marginTop: "20px" }}>
       <img src={student.imageUrl} alt="student-img" height="200px" />
       <h1>{student.firstname + " " + student.lastname}</h1>
+      <button
+        onClick={() => {
+          history.push(`/student/${student.id}/edit`);
+        }}
+      >
+        Edit Student Info
+      </button>
       <h3>{student.email}</h3>
 
       {student.campus ? (
