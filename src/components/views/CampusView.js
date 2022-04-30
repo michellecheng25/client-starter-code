@@ -22,7 +22,7 @@ const CampusView = (props) => {
           history.push(`/campus/${campus.id}/edit`);
         }}
       >
-        Edit Campus
+        Edit Campus Info
       </button>
       <p>{campus.address}</p>
       <p>{campus.description}</p>
