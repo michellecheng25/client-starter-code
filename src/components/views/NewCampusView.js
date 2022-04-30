@@ -92,7 +92,6 @@ const NewCampusView = (props) => {
               type="text"
               name="description"
               onChange={(e) => handleChange(e)}
-              required
             />
             <br />
             <br />
