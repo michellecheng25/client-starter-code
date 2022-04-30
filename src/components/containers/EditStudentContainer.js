@@ -12,6 +12,7 @@ import { Redirect } from "react-router-dom";
 
 import EditStudentView from "../views/EditStudentView";
 import { fetchStudentThunk, editStudentThunk } from "../../store/thunks";
+import { toast } from "react-toastify";
 
 class EditStudentContainer extends Component {
   // Initialize state
@@ -20,6 +21,7 @@ class EditStudentContainer extends Component {
     this.state = {
       firstname: "",
       lastname: "",
+      imageUrl: "",
       campusId: null,
       gpa: null,
       redirect: false,
@@ -60,23 +62,30 @@ class EditStudentContainer extends Component {
       firstname: this.state.firstname,
       lastname: this.state.lastname,
       email: this.state.email,
+      imageUrl: this.state.imageUrl,
       ...(this.state.campusId !== ""
         ? { campusId: this.state.campusId }
         : { campusId: null }),
       ...(this.state.gpa !== "" ? { gpa: this.state.gpa } : { gpa: null }),
     };
 
+    console.log(student);
+
     // Edit new student in back-end database
-    await this.props.editStudent(student);
+    let editedStudent = await this.props.editStudent(student);
+    console.log(editedStudent);
 
     // Update state, and trigger redirect to show the new student
-    this.setState((prev) => {
-      return {
-        ...prev,
-        redirect: true,
-        redirectId: student.id,
-      };
-    });
+    if (editedStudent)
+      this.setState((prev) => {
+        return {
+          ...prev,
+          redirect: true,
+          redirectId: editedStudent.id,
+        };
+      });
+    else
+      toast.error("Unable to edit student Info! Check if campus Id is valid!");
   };
 
   // Unmount when the component is being removed from the DOM:

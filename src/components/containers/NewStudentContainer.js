@@ -12,6 +12,7 @@ import { Redirect } from "react-router-dom";
 
 import NewStudentView from "../views/NewStudentView";
 import { addStudentThunk } from "../../store/thunks";
+import { toast } from "react-toastify";
 
 class NewStudentContainer extends Component {
   // Initialize state
@@ -53,14 +54,18 @@ class NewStudentContainer extends Component {
     console.log(newStudent);
 
     // Update state, and trigger redirect to show the new student
-    this.setState({
-      firstname: "",
-      lastname: "",
-      campusId: null,
-      gpa: null,
-      redirect: true,
-      redirectId: newStudent.id,
-    });
+    if (newStudent)
+      this.setState({
+        firstname: "",
+        lastname: "",
+        campusId: null,
+        gpa: null,
+        redirect: true,
+        redirectId: newStudent.id,
+      });
+    else {
+      toast.error("Unable to add student! Check if campus Id is valid!");
+    }
   };
 
   // Unmount when the component is being removed from the DOM:
