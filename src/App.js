@@ -15,6 +15,9 @@ import {
   EditStudentContainer,
 } from "./components/containers";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // if you create separate components for adding/editing
 // a student or campus, make sure you add routes to those
 // components here
@@ -37,6 +40,8 @@ const App = () => {
           component={EditStudentContainer}
         />
       </Switch>
+
+      <ToastContainer hideProgressBar={true} />
     </div>
   );
 };

@@ -135,6 +135,7 @@ export const editStudentThunk = (student) => async (dispatch) => {
     );
     // Update successful so change state with dispatch
     dispatch(ac.editStudent(updatedStudent));
+    return updatedStudent.data;
   } catch (err) {
     console.error(err);
   }
