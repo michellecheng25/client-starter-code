@@ -36,8 +36,10 @@ const useStyles = makeStyles(() => ({
 
 const EditStudentView = (props) => {
   const { student, handleChange, handleSubmit } = props;
-  console.log(student);
+
   const classes = useStyles();
+
+  if (!student.id) return <h1>No Student found</h1>;
 
   // Render a New Student view with an input form
   return (
