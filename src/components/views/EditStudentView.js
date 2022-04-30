@@ -42,7 +42,7 @@ const EditStudentView = (props) => {
   // Render a New Student view with an input form
   return (
     <div>
-      <h1>New Student</h1>
+      <h1>Edit Student</h1>
 
       <div className={classes.root}>
         <div className={classes.formContainer}>
@@ -82,6 +82,19 @@ const EditStudentView = (props) => {
               name="lastname"
               onChange={(e) => handleChange(e)}
               value={student.lastname || ""}
+              required
+            />
+            <br />
+            <br />
+
+            <label style={{ color: "#11153e", fontWeight: "bold" }}>
+              Student Imageurl:{" "}
+            </label>
+            <input
+              type="text"
+              name="imageUrl"
+              onChange={(e) => handleChange(e)}
+              value={student.imageUrl || ""}
               required
             />
             <br />
