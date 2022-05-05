@@ -68,6 +68,7 @@ const NewStudentView = (props) => {
               type="text"
               name="firstname"
               onChange={(e) => handleChange(e)}
+              required
             />
             <br />
             <br />
